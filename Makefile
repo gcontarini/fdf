@@ -33,17 +33,19 @@ obj/%.o : */%.c
 
 $(LIBFT) : 
 	@make -C libft/
-	@cp $@ ../
+	@cp libft/$@ .
 
 $(MLX) : 
 	@make -C mlx/
-	@cp $@ ../
+	@cp mlx/$@ .
 
 clean :
 	$(RM) $(OBJ)
+	@make fclean -C libft/
+	@make clean -C mlx/
 
 fclean : clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(LIBFT) $(MLX)
 
 re : fclean all	
 
