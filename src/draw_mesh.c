@@ -27,13 +27,11 @@ void	draw_conlines(t_vector a, double zoom, t_obj *obj, t_vars *buff)
 	int		w_lim;
 	int		h_lim;
 
-	n_h = vector(a.x + 1, a.y, a.z);
-	n_v = vector(a.x, a.y + 1, a.z);
-	w_lim = (int) n_h.x;
-	h_lim = (int) n_v.y;
+	w_lim = (int) (a.x + 1);
+	h_lim = (int) (a.y + 1);
+	n_h = orto_projection(vector(a.x + 1, a.y, a.z), zoom);
+	n_v = orto_projection(vector(a.x, a.y + 1, a.z), zoom);
 	a = orto_projection(a, zoom);
-	n_h = orto_projection(n_h, zoom);
-	n_v = orto_projection(n_v, zoom);
 	if (w_lim <= obj->width)
 		draw_line(vector2img(a, obj, buff), vector2img(n_h, obj, buff), C_SW, buff);
 	if (h_lim <= obj->heigth)

@@ -47,5 +47,7 @@ int	main(void)
 	mlx_put_image_to_window(v.mlx, v.win, v.img, 0, 0);
 	mlx_loop(v.mlx);
 	// Destroy image and window
+	mlx_destroy_image(v.mlx, v.img);
+	mlx_destroy_window(v.mlx, v.win);
 	return (0);
 }
