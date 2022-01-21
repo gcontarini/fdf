@@ -38,8 +38,10 @@ int	main(void)
 	v.win = mlx_new_window(v.mlx, v.width, v.heigth, "fdf");
 	if (!v.win)
 		return (-1);
-	// Returns error?
 	v.img = mlx_new_image(v.mlx, v.width, v.heigth);
+	// Implement xerror for error here
+	if (!v.img)
+		return (-1);
 	v.addr = mlx_get_data_addr(v.img, &v.bits_per_pixel, &v.line_length, &v.endian);
 	//mlx_key_hook(v.win, key_hook, &v);
 	draw_mesh(&obj, &v);
