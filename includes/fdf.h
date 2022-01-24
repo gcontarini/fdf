@@ -41,11 +41,15 @@ typedef struct s_vector
 
 typedef struct s_object
 {
-	int	width;
-	int	heigth;
-	int	max_z;
-	int	min_z;
-	double	**z;
+	int			width;
+	int			heigth;
+	int			nrows;
+	int			ncols;
+	double		x_min;
+	double		x_max;
+	double		y_min;
+	double		y_max;
+	t_vector	**vec;
 }	t_obj;
 
 // vector2img
@@ -54,7 +58,7 @@ double		heigth_transform(int img_heigth, t_vars *buff);
 t_pixel		vector2img(t_vector a, t_obj *obj, t_vars *buff);
 
 // pixel2buff
-int		buff_offset(int x, int y, t_vars *buff);
+int			buff_offset(int x, int y, t_vars *buff);
 void		pixel2buff(t_pixel a, int color, t_vars *buff);
 
 // vector_math
@@ -73,7 +77,7 @@ t_vector	vector(double x, double y, double z);
 
 // draw_mesh
 void		draw_mesh(t_obj *obj, t_vars *buff);
-void		draw_conlines(t_vector a, t_vector b, double zoom, t_obj *obj, t_vars *buff);
+void		draw_conlines(t_vector a, t_vector b, t_obj *obj, t_vars *buff);
 void		draw_outline(t_obj *obj, t_vars *buff);
 
 // projections

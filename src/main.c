@@ -12,32 +12,32 @@ int	main(void)
 		return (-1);
 	obj = fdf_openfile(av[1]);
 	*/
-	obj.z = (double **) malloc(5 * sizeof(double *));
+	obj.x_min = 0;
+	obj.y_min = 0;
+	obj.x_max = 0;
+	obj.y_max = 0;
+	obj.nrows = 5;
+	obj.ncols = 5;
+	obj.vec = (t_vector **) malloc(5 * sizeof(t_vector *));
 	for (int i = 0; i < 5; i++)
 	{
-		obj.z[i] = (double *) malloc(5 * sizeof(double));
+		obj.vec[i] = (t_vector *) malloc(5 * sizeof(t_vector));
 		for (int j = 0; j < 5; j++)
-			obj.z[i][j] = 0;
+		{
+			obj.vec[i][j] = orto_projection(vector(i, j, 5.9));
+			if (obj.vec[i][j].x > obj.x_max)
+				obj.x_max = obj.vec[i][j].x;
+			if (obj.vec[i][j].x < obj.x_min)
+				obj.x_min = obj.vec[i][j].x;
+			if (obj.vec[i][j].y > obj.y_max)
+				obj.y_max = obj.vec[i][j].y;
+			if (obj.vec[i][j].y < obj.y_min)
+				obj.y_min = obj.vec[i][j].y;
+		}
 	}
-	/*
-	obj.z[0][0] = 1;
-	obj.z[0][3] = -1;
-	obj.z[0][4] = -1;
-	obj.z[1][0] = -1;
-	obj.z[1][4] = 1;
-	obj.z[2][0] = -1;
-	obj.z[2][1] = 1;
-	obj.z[2][4] = -1;
-	obj.z[3][0] = 1;
-	obj.z[3][1] = -1;
-	obj.z[3][4] = 1;
-	obj.z[3][0] = 1;
-	*/
-	obj.z[0][0] = 1;
-	obj.width = 5;
-	obj.heigth = 5;
-	obj.max_z = 1;
-	obj.min_z = -1;
+	obj.vec[0][0] = orto_projection(vector(0, 0, 2));
+	obj.width = (int) nearbyint(fabs(obj.x_max - obj.x_min));
+	obj.heigth = (int) nearbyint(fabs(obj.y_max - obj.y_min));
 	v.width = 900;
 	v.heigth = 800;
 	v.mlx = mlx_init();
