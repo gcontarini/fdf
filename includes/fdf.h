@@ -74,6 +74,7 @@ t_vector	vector(double x, double y, double z);
 // draw_mesh
 void		draw_mesh(t_obj *obj, t_vars *buff);
 void		draw_conlines(t_vector a, t_vector b, double zoom, t_obj *obj, t_vars *buff);
+void		draw_outline(t_obj *obj, t_vars *buff);
 
 // projections
 t_vector	orto_projection(t_vector a, double zoom);

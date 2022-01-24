@@ -7,6 +7,11 @@ int	main(void)
 	t_vars		v;
 	t_obj		obj;
 
+	/*
+	if (ac != 2)
+		return (-1);
+	obj = fdf_openfile(av[1]);
+	*/
 	obj.z = (double **) malloc(5 * sizeof(double *));
 	for (int i = 0; i < 5; i++)
 	{
@@ -14,6 +19,7 @@ int	main(void)
 		for (int j = 0; j < 5; j++)
 			obj.z[i][j] = 0;
 	}
+	/*
 	obj.z[0][0] = 1;
 	obj.z[0][3] = -1;
 	obj.z[0][4] = -1;
@@ -26,6 +32,7 @@ int	main(void)
 	obj.z[3][1] = -1;
 	obj.z[3][4] = 1;
 	obj.z[3][0] = 1;
+	*/
 	obj.width = 5;
 	obj.heigth = 5;
 	obj.max_z = 1;
@@ -49,6 +56,7 @@ int	main(void)
 	mlx_put_image_to_window(v.mlx, v.win, v.img, 0, 0);
 	mlx_loop(v.mlx);
 	// Destroy image and window
+	//fdf_cleanfile(obj.z);
 	mlx_destroy_image(v.mlx, v.img);
 	mlx_destroy_window(v.mlx, v.win);
 	return (0);
