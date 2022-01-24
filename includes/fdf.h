@@ -11,7 +11,7 @@
 # include <stdio.h>
 
 # define C_SW 0x00FFFFFF
-# define MARGIN_PERC 0.1
+# define MARGIN_PERC 0.3
 
 typedef struct s_mlx_vars
 {
@@ -77,6 +77,6 @@ void		draw_conlines(t_vector a, t_vector b, double zoom, t_obj *obj, t_vars *buf
 void		draw_outline(t_obj *obj, t_vars *buff);
 
 // projections
-t_vector	orto_projection(t_vector a, double zoom);
+t_vector	orto_projection(t_vector a);
 
 #endif

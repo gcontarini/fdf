@@ -7,7 +7,6 @@ void	draw_mesh(t_obj *obj, t_vars *buff)
 	int		i;
 	int		j;
 
-	draw_outline(obj, buff);
 	i = 1;
 	while (i < obj->width)
 	{
@@ -23,6 +22,7 @@ void	draw_mesh(t_obj *obj, t_vars *buff)
 		}
 		i++;
 	}
+	draw_outline(obj, buff);
 }
 
 void	draw_conlines(t_vector a, t_vector b, double zoom, t_obj *obj, t_vars *buff)
@@ -30,8 +30,14 @@ void	draw_conlines(t_vector a, t_vector b, double zoom, t_obj *obj, t_vars *buff
 	t_vector	a_hat;
 	t_vector	b_hat;
 
-	a_hat = orto_projection(a, zoom);
-	b_hat = orto_projection(b, zoom);
+	zoom++;
+	a_hat = orto_projection(a);
+	b_hat = orto_projection(b);
+	// Before here has to pass all projected values to
+	// obj to find the heigth and width values
+	// And translate to make things in the middle
+	printf("%f %f %f\n", a_hat.x, a_hat.y, a_hat.z);
+	printf("%f %f %f\n", b_hat.x, b_hat.y, b_hat.z);
 	draw_line(vector2img(a_hat, obj, buff), vector2img(b_hat, obj, buff), C_SW, buff);
 }
 

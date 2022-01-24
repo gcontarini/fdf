@@ -33,6 +33,7 @@ int	main(void)
 	obj.z[3][4] = 1;
 	obj.z[3][0] = 1;
 	*/
+	obj.z[0][0] = 1;
 	obj.width = 5;
 	obj.heigth = 5;
 	obj.max_z = 1;
