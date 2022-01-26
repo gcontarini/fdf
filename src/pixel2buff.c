@@ -4,8 +4,12 @@ void	pixel2buff(t_pixel a, int color, t_vars *buff)
 {
 	char	*dst;
 
-	dst = buff->addr + buff_offset(a.x, a.y, buff);
-	*(unsigned int*) dst = color;
+	if ((a.x >= 0 && a.x < buff->width)
+		&& (a.y >= 0 && a.y < buff->heigth))
+	{
+		dst = buff->addr + buff_offset(a.x, a.y, buff);
+		*(unsigned int*) dst = color;
+	}
 }
 
 int	buff_offset(int x, int y, t_vars *buff)

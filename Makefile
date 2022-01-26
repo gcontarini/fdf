@@ -1,11 +1,13 @@
 ####### SOURCE FILES ######
-FILES	= draw_line.c		\
-	  draw_mesh.c		\
-	  pixel2buff.c		\
-	  projections.c		\
-	  vector2img.c		\
-	  vector_basic.c	\
-	  vector_math.c
+FILES	=	draw_line.c		\
+	  		draw_mesh.c		\
+			pixel2buff.c	\
+			projections.c	\
+			vector2img.c	\
+			vector_basic.c	\
+			vector_basic.c	\
+			fdf_center_offset.c	\
+			vector_math.c
 
 SRC	= $(addprefix src/, $(FILES))
 OBJ	= $(addprefix obj/, $(FILES:.c=.o))

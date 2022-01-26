@@ -19,11 +19,11 @@ typedef struct s_mlx_vars
 	void	*win;
 	void	*img;
 	char	*addr;
-	int	bits_per_pixel;
-	int	line_length;
-	int	endian;
-	int	width;
-	int	heigth;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		heigth;
 }	t_vars;
 
 typedef struct s_pixel_img
@@ -43,12 +43,8 @@ typedef struct s_object
 {
 	int			width;
 	int			heigth;
-	int			nrows;
-	int			ncols;
-	double		x_min;
-	double		x_max;
-	double		y_min;
-	double		y_max;
+	double		gamma;
+	t_pixel		center_offset;
 	t_vector	**vec;
 }	t_obj;
 
@@ -82,5 +78,9 @@ void		draw_outline(t_obj *obj, t_vars *buff);
 
 // projections
 t_vector	orto_projection(t_vector a);
+
+// fdf_center_offset
+t_pixel		fdf_center_offset(t_obj *obj, t_vars *buff);
+t_pixel		obj_center(t_obj *obj, t_vars *buff);
 
 #endif
