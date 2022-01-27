@@ -44,7 +44,7 @@ typedef struct s_object
 	int			width;
 	int			heigth;
 	double		gamma;
-	t_pixel		center_offset;
+	t_vector	center_offset;
 	t_vector	**vec;
 }	t_obj;
 
@@ -52,6 +52,7 @@ typedef struct s_object
 double		width_transform(int img_width, t_vars *buff);
 double		heigth_transform(int img_heigth, t_vars *buff);
 t_pixel		vector2img(t_vector a, t_obj *obj, t_vars *buff);
+t_vector	img2vector(t_pixel a, t_obj *obj, t_vars *buff);
 
 // pixel2buff
 int			buff_offset(int x, int y, t_vars *buff);
@@ -80,7 +81,8 @@ void		draw_outline(t_obj *obj, t_vars *buff);
 t_vector	orto_projection(t_vector a);
 
 // fdf_center_offset
-t_pixel		fdf_center_offset(t_obj *obj, t_vars *buff);
-t_pixel		obj_center(t_obj *obj, t_vars *buff);
+t_vector	fdf_center_offset(t_obj *obj, t_vars *buff);
+t_vector	obj_center(t_obj *obj);
+t_vector	vec_offset(t_vector a, t_vector offset);
 
 #endif

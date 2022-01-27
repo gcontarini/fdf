@@ -22,6 +22,7 @@ int	main(void)
 	}
 	obj.width = 5;
 	obj.heigth = 5;
+	obj.center_offset = fdf_center_offset(&obj, &v);
 	v.width = 900;
 	v.heigth = 800;
 	v.mlx = mlx_init();
@@ -36,7 +37,6 @@ int	main(void)
 		return (-1);
 	v.addr = mlx_get_data_addr(v.img, &v.bits_per_pixel, &v.line_length, &v.endian);
 	//mlx_key_hook(v.win, key_hook, &v);
-	obj.center_offset = fdf_center_offset(&obj, &v);
 	draw_mesh(&obj, &v);
 	// No test anymore
 	mlx_put_image_to_window(v.mlx, v.win, v.img, 0, 0);

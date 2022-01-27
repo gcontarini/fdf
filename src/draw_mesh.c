@@ -27,16 +27,12 @@ void	draw_mesh(t_obj *obj, t_vars *buff)
 
 void	draw_conlines(t_vector a, t_vector b, t_obj *obj, t_vars *buff)
 {
-	t_pixel	a_hat;
-	t_pixel	b_hat;
+	t_vector	a_hat;
+	t_vector	b_hat;
 
-	a_hat = vector2img(a, obj, buff);
-	b_hat = vector2img(b, obj, buff);
-	a_hat.x = a_hat.x + obj->center_offset.x;
-	a_hat.y = a_hat.y + obj->center_offset.y;
-	b_hat.x = b_hat.x + obj->center_offset.x;
-	b_hat.x = b_hat.y + obj->center_offset.y;
-	draw_line(a_hat, b_hat, C_SW, buff);
+	a_hat = vec_offset(a, obj->center_offset);
+	b_hat = vec_offset(b, obj->center_offset);
+	draw_line(vector2img(a_hat, obj, buff), vector2img(b_hat, obj, buff), C_SW, buff);
 }
 
 void	draw_outline(t_obj *obj, t_vars *buff)
