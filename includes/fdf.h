@@ -3,6 +3,7 @@
 # include "libft.h"
 # include "get_next_line.h"
 # include "ft_printf.h"
+# include "ft_queue.h"
 # include "mlx.h"
 # include <fcntl.h>
 # include <math.h>
@@ -12,6 +13,7 @@
 
 # define C_SW 0x00FFFFFF
 # define MARGIN_PERC 0.3
+# define UPHEX_BASE "0123456789ABCDEF"
 
 typedef struct s_mlx_vars
 {
@@ -84,5 +86,21 @@ t_vector	orto_projection(t_vector a);
 t_vector	fdf_center_offset(t_obj *obj, t_vars *buff);
 t_vector	obj_center(t_obj *obj);
 t_vector	vec_offset(t_vector a, t_vector offset);
+
+// fdf_itof
+double		fdf_itof(int integer, int frac);
+
+// fdf_file
+int		fdf_open_objfile(char *file, t_obj *obj, t_vars *buff);
+int		line_to_mvector(t_queue2 *que, t_obj *obj);
+t_vector	*line_to_avector(char *line, t_obj *obj);
+t_queue2	*openfile(char *file);
+int		measure_width(t_queue2	*que);
+
+// fdf_atoiuhex
+int		fdf_atoiuhex(const char *str);
+
+// fdf_clean
+void		fdf_cleanobj(t_obj *obj);
 
 #endif

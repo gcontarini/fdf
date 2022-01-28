@@ -2,27 +2,15 @@
 
 //int	key_hook(int keycode, void  
 
-int	main(void)
+int	main(int ac, char *av[])
 {
 	t_vars		v;
 	t_obj		obj;
 
-	/*
 	if (ac != 2)
 		return (-1);
-	obj = fdf_openfile(av[1]);
-	*/
-	obj.gamma = 1.0;
-	obj.vec = (t_vector **) malloc(5 * sizeof(t_vector *));
-	for (int i = 0; i < 5; i++)
-	{
-		obj.vec[i] = (t_vector *) malloc(5 * sizeof(t_vector));
-		for (int j = 0; j < 5; j++)
-			obj.vec[i][j] = orto_projection(vector(i, j, 0 * obj.gamma));
-	}
-	obj.width = 5;
-	obj.heigth = 5;
-	obj.center_offset = fdf_center_offset(&obj, &v);
+	if (!fdf_open_objfile(av[1], &obj, &v))
+		return (-1);
 	v.width = 900;
 	v.heigth = 800;
 	v.mlx = mlx_init();
@@ -42,7 +30,7 @@ int	main(void)
 	mlx_put_image_to_window(v.mlx, v.win, v.img, 0, 0);
 	mlx_loop(v.mlx);
 	// Destroy image and window
-	//fdf_cleanfile(obj.vec);
+	fdf_cleanobj(&obj);
 	mlx_destroy_image(v.mlx, v.img);
 	mlx_destroy_window(v.mlx, v.win);
 	return (0);

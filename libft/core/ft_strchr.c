@@ -17,6 +17,8 @@ char	*ft_strchr(const char *s, int c)
 	char	*p;
 
 	p = (char *) s;
+	if (!p)
+		return (NULL);
 	while (*p)
 	{
 		if (*p == (char) c)

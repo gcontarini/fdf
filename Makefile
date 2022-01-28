@@ -7,6 +7,10 @@ FILES	=	draw_line.c		\
 			vector_basic.c	\
 			vector_basic.c	\
 			fdf_center_offset.c	\
+			fdf_itof.c	\
+			fdf_atoiuhex.c	\
+			fdf_files.c	\
+			fdf_clean.c	\
 			vector_math.c
 
 SRC	= $(addprefix src/, $(FILES))
@@ -20,7 +24,8 @@ MLX	= libmlx.a
 
 ###### COMPILER ######
 CC	= gcc
-CFLAGS	= -Wall -Wextra -Werror
+#CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= 
 RM	= rm -f
 DLIBS	= -framework OpenGL -framework AppKit
 
