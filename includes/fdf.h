@@ -53,6 +53,9 @@ typedef struct s_pixel_img
 	int	y;
 }	t_pixel;
 
+// main
+void		fdf_winsize(t_vars *vars, t_obj *obj, int width, int heigth);
+
 // vector2img
 double		width_transform(int img_width, t_vars *buff);
 double		heigth_transform(int img_heigth, t_vars *buff);
