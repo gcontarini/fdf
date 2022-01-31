@@ -11,6 +11,7 @@ FILES	=	draw_line.c		\
 			fdf_atoiuhex.c	\
 			fdf_files.c	\
 			fdf_clean.c	\
+			fdf_exit.c	\
 			hooks.c		\
 			vector_math.c
 

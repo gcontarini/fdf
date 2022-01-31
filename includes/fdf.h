@@ -106,6 +106,10 @@ int		fdf_atoiuhex(const char *str);
 void		fdf_cleanobj(t_obj *obj);
 t_vector	*fdf_cleanstrvec(t_vector *vec, char **mtx);
 
+// fdf_exit
+int		fdf_xerror(t_obj *obj, t_vars *buff);
+int		fdf_exit(t_obj *obj, t_vars *buff);
+
 // hooks
 void		fdf_registerhooks(t_vars *vars);
 int		key_hook(int keycode, t_vars *vars);

@@ -9,12 +9,7 @@ void	fdf_registerhooks(t_vars *vars)
 int	key_hook(int keycode, t_vars *vars)
 {
 	if (keycode == 53)
-	{
-		fdf_cleanobj(vars->obj);
-		mlx_destroy_image(vars->mlx, vars->img);
-		mlx_destroy_window(vars->mlx, vars->win);
-		exit(0);
-	}
+		fdf_exit(vars->obj, vars);
 	else if (keycode == 126 || keycode == 13)
 		vars->obj->gamma += 0.1;
 	else if (keycode == 125 || keycode == 1)
@@ -22,12 +17,8 @@ int	key_hook(int keycode, t_vars *vars)
 	return (0);
 }
 
-
 int	cwin_hook(t_vars *vars)
 {
-	fdf_cleanobj(vars->obj);
-	mlx_destroy_image(vars->mlx, vars->img);
-	mlx_destroy_window(vars->mlx, vars->win);
-	exit(0);
+	fdf_exit(vars->obj, vars);
 	return (0);
 }
