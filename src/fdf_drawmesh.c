@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-void	draw_mesh(t_obj *obj, t_vars *buff)
+void	fdf_drawmesh(t_obj *obj, t_vars *buff)
 {
 	t_vector	a;
 	t_vector	b;
@@ -8,10 +8,10 @@ void	draw_mesh(t_obj *obj, t_vars *buff)
 	int		j;
 
 	i = 1;
-	while (i < obj->width)
+	while (i < obj->heigth)
 	{
 		j = 1;
-		while (j < obj->heigth)
+		while (j < obj->width)
 		{
 			a = obj->vec[i][j];
 			b = obj->vec[i][j - 1];
@@ -23,6 +23,7 @@ void	draw_mesh(t_obj *obj, t_vars *buff)
 		i++;
 	}
 	draw_outline(obj, buff);
+	mlx_put_image_to_window(buff->mlx, buff->win, buff->img, 0, 0);
 }
 
 void	draw_conlines(t_vector a, t_vector b, t_obj *obj, t_vars *buff)
@@ -44,7 +45,7 @@ void	draw_outline(t_obj *obj, t_vars *buff)
 
 	i = 1;
 	j = 0;
-	while (i < obj->width)
+	while (i < obj->heigth)
 	{
 		a = obj->vec[i][j];
 		b = obj->vec[i - 1][j];
@@ -53,7 +54,7 @@ void	draw_outline(t_obj *obj, t_vars *buff)
 	}
 	i = 0;
 	j = 1;
-	while (j < obj->heigth)
+	while (j < obj->width)
 	{
 		a = obj->vec[i][j - 1];
 		b = obj->vec[i][j];

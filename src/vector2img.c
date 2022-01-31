@@ -10,7 +10,6 @@ t_pixel	vector2img(t_vector a, t_obj *obj, t_vars *buff)
 	y_margin = (int) nearbyint(buff->heigth * MARGIN_PERC);
 	pixel.x = x_margin + (int) nearbyint(a.x * width_transform(obj->width, buff));
 	pixel.y =  buff->heigth - y_margin - (int) nearbyint(a.y * heigth_transform(obj->heigth, buff));
-	//printf("X: %i Y: %i\n", pixel.x, pixel.y);
 	return (pixel);
 }
 

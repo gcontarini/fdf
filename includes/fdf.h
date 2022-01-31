@@ -15,6 +15,24 @@
 # define MARGIN_PERC 0.3
 # define UPHEX_BASE "0123456789ABCDEF"
 
+typedef struct s_vector
+{
+	double	x;
+	double	y;
+	double	z;
+}	t_vector;
+
+
+typedef struct s_object
+{
+	int			width;
+	int			heigth;
+	double		gamma;
+	t_vector	center_offset;
+	t_vector	**vec;
+}	t_obj;
+
+
 typedef struct s_mlx_vars
 {
 	void	*mlx;
@@ -26,6 +44,7 @@ typedef struct s_mlx_vars
 	int		endian;
 	int		width;
 	int		heigth;
+	t_obj		*obj;
 }	t_vars;
 
 typedef struct s_pixel_img
@@ -34,22 +53,6 @@ typedef struct s_pixel_img
 	int	y;
 }	t_pixel;
 
-typedef struct s_vector
-{
-	double	x;
-	double	y;
-	double	z;
-}	t_vector;
-
-typedef struct s_object
-{
-	int			width;
-	int			heigth;
-	double		gamma;
-	t_vector	center_offset;
-	t_vector	**vec;
-}	t_obj;
-
 // vector2img
 double		width_transform(int img_width, t_vars *buff);
 double		heigth_transform(int img_heigth, t_vars *buff);
@@ -57,7 +60,7 @@ t_pixel		vector2img(t_vector a, t_obj *obj, t_vars *buff);
 t_vector	img2vector(t_pixel a, t_obj *obj, t_vars *buff);
 
 // pixel2buff
-int			buff_offset(int x, int y, t_vars *buff);
+int		buff_offset(int x, int y, t_vars *buff);
 void		pixel2buff(t_pixel a, int color, t_vars *buff);
 
 // vector_math
@@ -67,15 +70,14 @@ t_vector	scalar_vector(double scalar, t_vector a);
 
 // draw_line
 void		draw_line(t_pixel a, t_pixel b, int color, t_vars *buff);
-void		draw_vline(t_pixel a, t_pixel b, int color, t_vars *buff);
-double		find_slope(t_pixel a, t_pixel b);
-double		find_const(t_pixel a, double m);
+void		bresenhaml(t_pixel a, t_pixel b, int color, t_vars *buff);
+void		bresenhamh(t_pixel a, t_pixel b, int color, t_vars *buff);
 
 // vector_basic
 t_vector	vector(double x, double y, double z);
 
 // draw_mesh
-void		draw_mesh(t_obj *obj, t_vars *buff);
+void		fdf_drawmesh(t_obj *obj, t_vars *buff);
 void		draw_conlines(t_vector a, t_vector b, t_obj *obj, t_vars *buff);
 void		draw_outline(t_obj *obj, t_vars *buff);
 
@@ -102,5 +104,11 @@ int		fdf_atoiuhex(const char *str);
 
 // fdf_clean
 void		fdf_cleanobj(t_obj *obj);
+t_vector	*fdf_cleanstrvec(t_vector *vec, char **mtx);
+
+// hooks
+void		fdf_registerhooks(t_vars *vars);
+int		key_hook(int keycode, t_vars *vars);
+int		cwin_hook(t_vars *vars);
 
 #endif

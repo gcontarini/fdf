@@ -41,28 +41,28 @@ int	line_to_mvector(t_queue2 *que, t_obj *obj)
 t_vector	*line_to_avector(char *line, t_obj *obj)
 {
 	t_vector	*vec;
-	double		z;
+	char		**val;
 	char		*frac;
-	char		*p;
+	double		z;
 	int		i;
 
+	val = ft_split(line, ' ');
 	vec = (t_vector *) malloc(obj->width * sizeof(t_vector));
-	if (!vec)
-		return (NULL);
+	if (!vec || !val)
+		return (fdf_cleanstrvec(vec, val));
 	i = 0;
-	while (i < obj->width)
+	while (val[i])
 	{
-		frac = ft_strchr(line, 'x');
-		p = ft_strchr(line, ' ');
-		if (frac && (frac < p || !p))
-			z = fdf_itof(ft_atoi(line), fdf_atoiuhex(frac + 1));
+		frac = ft_strchr(val[i], 'x');
+		if (frac)
+			z = fdf_itof(ft_atoi(val[i]), fdf_atoiuhex(++frac));
 		else
-			z = fdf_itof(ft_atoi(line), 0);
+			z = fdf_itof(ft_atoi(val[i]), 0);
 		vec[i] = orto_projection(vector(i, obj->heigth, z * obj->gamma));
 		i++;
-		line = p + 1;
 	}
 	obj->heigth++;
+	fdf_cleanstrvec(NULL, val);
 	return (vec);
 }
 

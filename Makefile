@@ -1,6 +1,6 @@
 ####### SOURCE FILES ######
 FILES	=	draw_line.c		\
-	  		draw_mesh.c		\
+	  		fdf_drawmesh.c	\
 			pixel2buff.c	\
 			projections.c	\
 			vector2img.c	\
@@ -11,6 +11,7 @@ FILES	=	draw_line.c		\
 			fdf_atoiuhex.c	\
 			fdf_files.c	\
 			fdf_clean.c	\
+			hooks.c		\
 			vector_math.c
 
 SRC	= $(addprefix src/, $(FILES))

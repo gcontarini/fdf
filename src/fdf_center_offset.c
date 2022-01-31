@@ -24,11 +24,12 @@ t_vector	obj_center(t_obj *obj)
 			
 	center = vector(0.0, 0.0, 0.0);
 	i = 0;
-	while (i < obj->width)
+	while (i < obj->heigth)
 	{
 		j = 0;
-		while (j < obj->heigth)
+		while (j < obj->width)
 		{
+
 			center.x += obj->vec[i][j].x;
 			center.y += obj->vec[i][j].y;
 			center.z += obj->vec[i][j].z;
