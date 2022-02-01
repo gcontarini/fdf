@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_files.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/01 17:36:54 by gcontari          #+#    #+#             */
+/*   Updated: 2022/02/01 17:40:16 by gcontari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 int	fdf_open_objfile(char *file, t_obj *obj, t_vars *buff)
@@ -90,15 +102,18 @@ t_queue2	*openfile(char *file)
 int	measure_width(t_queue2	*que)
 {
 	char		*p;
-	int		width;
+	int			width;
 
 	p = (char *) (ft_queget(que, 0)->content);
 	width = 0;
-	while (p && *p && (*(p + 1) != '\n' && *(p + 1) != 0))
+	while (p && *p)
 	{
-		p++;
-		width++;
-		p = ft_strchr(p, ' ');
+		while (*p == ' ' && *p)
+			p++;
+		if (*p != 0)
+			width++;
+		while (*p != ' ' && *p)
+			p++;
 	}
 	return (width);
 }

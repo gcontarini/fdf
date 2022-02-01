@@ -6,13 +6,13 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 11:03:45 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/01 15:33:31 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/01 18:13:04 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	fdf_zoom(t_vars *vars, double dz)
+void	fdf_zoom(t_vars *vars, int x, int y, double dz)
 {
 	int			i;
 	int			j;
@@ -24,7 +24,11 @@ void	fdf_zoom(t_vars *vars, double dz)
 		j = 0;
 		while (j < vars->obj->width)
 		{	
+			vars->obj->vec[i][j].x -= x;
+			vars->obj->vec[i][j].y -= vars->heigth - y;
 			vars->obj->vec[i][j] = scalar_vector(dz, vars->obj->vec[i][j]);
+			vars->obj->vec[i][j].x += x;
+			vars->obj->vec[i][j].y += vars->heigth - y;
 			j++;
 		}
 		i++;

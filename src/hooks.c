@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 11:03:50 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/01 14:24:14 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/01 18:07:39 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ int	mouse_hook(int mousecode, int x, int y, t_vars *vars)
 {
 	if (mousecode == 5)
 	{
-		fdf_zoom(vars, 0.1);
+		fdf_zoom(vars, x, y, 0.1);
 		fdf_drawblank(vars);
 		fdf_drawmesh(vars->obj, vars);
 	}
 	else if (mousecode == 4)
 	{
-		fdf_zoom(vars, -0.1);
+		fdf_zoom(vars, x, y, -0.1);
 		fdf_drawblank(vars);
 		fdf_drawmesh(vars->obj, vars);
 	}

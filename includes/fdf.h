@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 12:04:19 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/01 14:24:12 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/01 18:15:45 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_mlx_vars
 	int		endian;
 	int		width;
 	int		heigth;
-	t_obj		*obj;
+	t_obj	*obj;
 }	t_vars;
 
 typedef struct s_pixel_img
@@ -71,7 +71,7 @@ t_pixel		vector2img(t_vector a, t_obj *obj, t_vars *buff);
 t_vector	img2vector(t_pixel a, t_obj *obj, t_vars *buff);
 
 // pixel2buff
-int		buff_offset(int x, int y, t_vars *buff);
+int			buff_offset(int x, int y, t_vars *buff);
 void		pixel2buff(t_pixel a, int color, t_vars *buff);
 
 // vector_math
@@ -104,25 +104,25 @@ t_vector	vec_offset(t_vector a, t_vector offset);
 double		fdf_itof(int integer, int frac);
 
 // fdf_file
-int		fdf_open_objfile(char *file, t_obj *obj, t_vars *buff);
-int		line_to_mvector(t_queue2 *que, t_obj *obj);
+int			fdf_open_objfile(char *file, t_obj *obj, t_vars *buff);
+int			line_to_mvector(t_queue2 *que, t_obj *obj);
 t_vector	*line_to_avector(char *line, t_obj *obj);
 t_queue2	*openfile(char *file);
-int		measure_width(t_queue2	*que);
+int			measure_width(t_queue2	*que);
 
 // fdf_atoiuhex
-int		fdf_atoiuhex(const char *str);
+int			fdf_atoiuhex(const char *str);
 
 // fdf_clean
 void		fdf_cleanobj(t_obj *obj);
 t_vector	*fdf_cleanstrvec(t_vector *vec, char **mtx);
 
 // fdf_exit
-int		fdf_xerror(t_obj *obj, t_vars *buff);
-int		fdf_exit(t_obj *obj, t_vars *buff);
+int			fdf_xerror(t_obj *obj, t_vars *buff);
+int			fdf_exit(t_obj *obj, t_vars *buff);
 
 // fdf_zoom
-void		fdf_zoom(t_vars *vars, double dz);
+void		fdf_zoom(t_vars *vars, int x, int y, double dz);
 void		fdf_gammazoom(t_vars *vars, int keycode);
 
 // fdf_drawblank
