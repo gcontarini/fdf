@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 12:04:19 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/01 12:16:01 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/01 14:24:12 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 
 # define C_SW 0x00FFFFFF
 # define C_SB 0x00000000
-# define MARGIN_PERC 0.3
 # define UPHEX_BASE "0123456789ABCDEF"
 
 typedef struct s_vector
@@ -35,7 +34,6 @@ typedef struct s_vector
 	double	z;
 }	t_vector;
 
-
 typedef struct s_object
 {
 	int			width;
@@ -44,7 +42,6 @@ typedef struct s_object
 	t_vector	center_offset;
 	t_vector	**vec;
 }	t_obj;
-
 
 typedef struct s_mlx_vars
 {
@@ -125,7 +122,8 @@ int		fdf_xerror(t_obj *obj, t_vars *buff);
 int		fdf_exit(t_obj *obj, t_vars *buff);
 
 // fdf_zoom
-void		fdf_zoom(t_obj *obj, t_vars *vars, double dz);
+void		fdf_zoom(t_vars *vars, double dz);
+void		fdf_gammazoom(t_vars *vars, int keycode);
 
 // fdf_drawblank
 void		fdf_drawblank(t_vars *vars);
