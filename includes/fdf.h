@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 12:04:19 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/01 18:15:45 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/01 19:23:15 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void		pixel2buff(t_pixel a, int color, t_vars *buff);
 double		dot_product(t_vector a, t_vector b);
 t_vector	sum_vector(t_vector a, t_vector b);
 t_vector	scalar_vector(double scalar, t_vector a);
+t_vector	rotate(t_vector vec, double rad);
 
 // draw_line
 void		draw_line(t_pixel a, t_pixel b, int color, t_vars *buff);
@@ -124,6 +125,7 @@ int			fdf_exit(t_obj *obj, t_vars *buff);
 // fdf_zoom
 void		fdf_zoom(t_vars *vars, int x, int y, double dz);
 void		fdf_gammazoom(t_vars *vars, int keycode);
+void		fdf_rotate(t_vars *vars, int keycode);
 
 // fdf_drawblank
 void		fdf_drawblank(t_vars *vars);
