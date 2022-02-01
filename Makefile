@@ -1,6 +1,7 @@
 ####### SOURCE FILES ######
 FILES	=	draw_line.c		\
 	  		fdf_drawmesh.c	\
+	  		fdf_drawblank.c	\
 			pixel2buff.c	\
 			projections.c	\
 			vector2img.c	\
@@ -8,6 +9,8 @@ FILES	=	draw_line.c		\
 			vector_basic.c	\
 			fdf_center_offset.c	\
 			fdf_itof.c	\
+			fdf_zoom.c	\
+			fdf_move.c	\
 			fdf_atoiuhex.c	\
 			fdf_files.c	\
 			fdf_clean.c	\

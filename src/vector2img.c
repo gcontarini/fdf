@@ -3,41 +3,17 @@
 t_pixel	vector2img(t_vector a, t_obj *obj, t_vars *buff)
 {
 	t_pixel	pixel;
-	int	x_margin;
-	int	y_margin;
 
-	x_margin = (int) nearbyint(buff->width * MARGIN_PERC);
-	y_margin = (int) nearbyint(buff->heigth * MARGIN_PERC);
-	pixel.x = x_margin + (int) nearbyint(a.x * width_transform(obj->width, buff));
-	pixel.y =  buff->heigth - y_margin - (int) nearbyint(a.y * heigth_transform(obj->heigth, buff));
+	pixel.x = (int) nearbyint(a.x);
+	pixel.y =  buff->heigth - (int) nearbyint(a.y);
 	return (pixel);
-}
-
-double	width_transform(int img_width, t_vars *buff)
-{
-	double	x_margin;
-
-	x_margin = ((double) buff->width * MARGIN_PERC * 2);
-	return ((buff->width - x_margin) / (double) (img_width - 1));
-}
-
-double	heigth_transform(int img_heigth, t_vars *buff)
-{
-	double	y_margin;
-
-	y_margin = ((double) buff->heigth * MARGIN_PERC * 2);
-	return ((buff->heigth - y_margin) / (double) (img_heigth - 1));
 }
 
 t_vector	img2vector(t_pixel a, t_obj *obj, t_vars *buff)
 {
 	t_vector	vec;
-	int		x_margin;
-	int		y_margin;
 
-	x_margin = (int) nearbyint(buff->width * MARGIN_PERC);
-	y_margin = (int) nearbyint(buff->heigth * MARGIN_PERC);
-	vec.x = (a.x - x_margin) / width_transform(obj->width, buff);
-	vec.y = (a.y - y_margin) / heigth_transform(obj->heigth, buff);
+	vec.x = (double) a.x;
+	vec.y = (double) a.y;
 	return (vec);
 }

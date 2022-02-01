@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/01 12:04:19 by gcontari          #+#    #+#             */
+/*   Updated: 2022/02/01 12:16:01 by gcontari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_H
 # define FDF_H
 # include "libft.h"
@@ -12,6 +24,7 @@
 # include <stdio.h>
 
 # define C_SW 0x00FFFFFF
+# define C_SB 0x00000000
 # define MARGIN_PERC 0.3
 # define UPHEX_BASE "0123456789ABCDEF"
 
@@ -57,8 +70,6 @@ typedef struct s_pixel_img
 void		fdf_winsize(t_vars *vars, t_obj *obj, int width, int heigth);
 
 // vector2img
-double		width_transform(int img_width, t_vars *buff);
-double		heigth_transform(int img_heigth, t_vars *buff);
 t_pixel		vector2img(t_vector a, t_obj *obj, t_vars *buff);
 t_vector	img2vector(t_pixel a, t_obj *obj, t_vars *buff);
 
@@ -113,9 +124,20 @@ t_vector	*fdf_cleanstrvec(t_vector *vec, char **mtx);
 int		fdf_xerror(t_obj *obj, t_vars *buff);
 int		fdf_exit(t_obj *obj, t_vars *buff);
 
+// fdf_zoom
+void		fdf_zoom(t_obj *obj, t_vars *vars, double dz);
+
+// fdf_drawblank
+void		fdf_drawblank(t_vars *vars);
+
+// fdf_move
+void		fdf_updown(t_vars *vars, int keycode);
+void		fdf_leftright(t_vars *vars, int keycode);
+
 // hooks
 void		fdf_registerhooks(t_vars *vars);
-int		key_hook(int keycode, t_vars *vars);
-int		cwin_hook(t_vars *vars);
+int			key_hook(int keycode, t_vars *vars);
+int			mouse_hook(int mousecode, int x, int y, t_vars *vars);
+int			cwin_hook(t_vars *vars);
 
 #endif
