@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:36:54 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/01 17:40:16 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/02 16:04:13 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ t_vector	*line_to_avector(char *line, t_obj *obj)
 			z = fdf_itof(ft_atoi(val[i]), fdf_atoiuhex(++frac));
 		else
 			z = fdf_itof(ft_atoi(val[i]), 0);
-		vec[i] = orto_projection(vector(i, obj->heigth, z * obj->gamma));
-		i++;
+		vec[i] = orto_projection(vector(i, obj->heigth, -z * obj->gamma));
+		vec[i++].og_z = -z * obj->gamma;
 	}
 	obj->heigth++;
 	fdf_cleanstrvec(NULL, val);

@@ -5,7 +5,7 @@ t_pixel	vector2img(t_vector a, t_obj *obj, t_vars *buff)
 	t_pixel	pixel;
 
 	pixel.x = (int) nearbyint(a.x);
-	pixel.y =  buff->heigth - (int) nearbyint(a.y);
+	pixel.y =  (int) nearbyint(a.y);
 	return (pixel);
 }
 

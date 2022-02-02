@@ -12,6 +12,7 @@ t_vector	sum_vector(t_vector a, t_vector b)
 	r.x = a.x + b.x;
 	r.y = a.y + b.y;
 	r.z = a.z + b.z;
+	r.og_z = a.og_z;
 	return (r);
 }
 
@@ -22,5 +23,6 @@ t_vector	scalar_vector(double scalar, t_vector a)
 	r.x = a.x * scalar;
 	r.y = a.y * scalar;
 	r.z = a.z * scalar;
+	r.og_z = a.og_z;
 	return (r);
 }

@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 11:03:45 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/01 19:29:19 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/02 15:59:33 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,7 @@ void	fdf_zoom(t_vars *vars, int x, int y, double dz)
 		j = 0;
 		while (j < vars->obj->width)
 		{	
-			vars->obj->vec[i][j].x -= x;
-			vars->obj->vec[i][j].y -= vars->heigth - y;
 			vars->obj->vec[i][j] = scalar_vector(dz, vars->obj->vec[i][j]);
-			vars->obj->vec[i][j].x += x;
-			vars->obj->vec[i][j].y += vars->heigth - y;
 			j++;
 		}
 		i++;
@@ -42,17 +38,16 @@ void	fdf_gammazoom(t_vars *vars, int keycode)
 	int		i;
 	int		j;
 
-	delta = 0.1;
+	delta = 0.8;
 	if (keycode == 13)
-		delta = -0.1;
+		delta = -0.8;
 	i = 0;
 	while (i < vars->obj->heigth)
 	{
 		j = 0;
 		while (j < vars->obj->width)
 		{	
-			// Must use og values of z, not the transformed vector
-			delta_y = (sqrt(6.0) * vars->obj->vec[i][j].z) / 3.0;
+			delta_y = (sqrt(6.0) * vars->obj->vec[i][j].og_z) / 3.0;
 			vars->obj->vec[i][j].y += delta_y * delta;
 			j++;
 		}

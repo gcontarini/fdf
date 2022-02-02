@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 12:04:19 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/01 19:23:15 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/02 15:46:21 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_vector
 	double	x;
 	double	y;
 	double	z;
+	double	og_z;
 }	t_vector;
 
 typedef struct s_object
