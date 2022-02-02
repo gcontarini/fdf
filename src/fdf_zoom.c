@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 11:03:45 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/02 15:59:33 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/02 16:08:39 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	fdf_gammazoom(t_vars *vars, int keycode)
 	int		i;
 	int		j;
 
-	delta = 0.8;
+	delta = -0.6;
 	if (keycode == 13)
-		delta = -0.8;
+		delta = 0.6;
 	i = 0;
 	while (i < vars->obj->heigth)
 	{
