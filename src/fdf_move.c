@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 12:05:04 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/01 12:18:16 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/03 11:04:22 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	fdf_updown(t_vars *vars, int keycode)
 	int	i;
 	int	j;
 
-	delta = 20;
+	delta = -20;
 	if (keycode == 125)
-		delta = -20;
+		delta = 20;
 	i = 0;
 	while (i < vars->obj->heigth)
 	{

@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 11:03:45 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/02 16:08:39 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/03 11:07:12 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ void	fdf_zoom(t_vars *vars, int x, int y, double dz)
 		j = 0;
 		while (j < vars->obj->width)
 		{	
+			vars->obj->vec[i][j].x -= x - vars->obj->center_offset.x;
+			vars->obj->vec[i][j].y -= y - vars->obj->center_offset.y;
 			vars->obj->vec[i][j] = scalar_vector(dz, vars->obj->vec[i][j]);
+			vars->obj->vec[i][j].x += x - vars->obj->center_offset.x;
+			vars->obj->vec[i][j].y += y - vars->obj->center_offset.y;
 			j++;
 		}
 		i++;
