@@ -15,14 +15,3 @@ t_vector	sum_vector(t_vector a, t_vector b)
 	r.og_z = a.og_z;
 	return (r);
 }
-
-t_vector	scalar_vector(double scalar, t_vector a)
-{
-	t_vector	r;
-
-	r.x = a.x * scalar;
-	r.y = a.y * scalar;
-	r.z = a.z * scalar;
-	r.og_z = a.og_z;
-	return (r);
-}

@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 12:04:19 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/03 19:17:50 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/04 12:15:17 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_object
 {
 	int			width;
 	int			heigth;
-	double		gamma;
+	int			color;
 	t_vector	center_offset;
 	t_vector	**vec;
 }	t_obj;
@@ -67,43 +67,37 @@ typedef struct s_pixel_img
 // main
 void		fdf_winsize(t_vars *vars, t_obj *obj, int width, int heigth);
 
-// vector2img
-t_pixel		vector2img(t_vector a, t_obj *obj, t_vars *buff);
-t_vector	img2vector(t_pixel a, t_obj *obj, t_vars *buff);
-
 // pixel2buff
 int			buff_offset(int x, int y, t_vars *buff);
 void		pixel2buff(t_pixel a, int color, t_vars *buff);
 
-// vector_math
-double		dot_product(t_vector a, t_vector b);
-t_vector	sum_vector(t_vector a, t_vector b);
+// vector
+t_vector	vector(double x, double y, double z);
 t_vector	scalar_vector(double scalar, t_vector a);
-t_vector	rotate(t_vector vec, double rad);
+t_vector	orto_projection(t_vector a);
+
+// vector2img
+t_pixel		vector2img(t_vector a, t_obj *obj, t_vars *buff);
+t_vector	img2vector(t_pixel a, t_obj *obj, t_vars *buff);
 
 // draw_line
 void		draw_line(t_pixel a, t_pixel b, int color, t_vars *buff);
 void		bresenhaml(t_pixel a, t_pixel b, int color, t_vars *buff);
 void		bresenhamh(t_pixel a, t_pixel b, int color, t_vars *buff);
 
-// vector_basic
-t_vector	vector(double x, double y, double z);
-
-// draw_mesh
+// fdf_drawmesh
 void		fdf_drawmesh(t_obj *obj, t_vars *buff);
 void		draw_conlines(t_vector a, t_vector b, t_obj *obj, t_vars *buff);
 void		draw_outline(t_obj *obj, t_vars *buff);
 
-// projections
-t_vector	orto_projection(t_vector a);
+// fdf_drawutils
+void		fdf_drawblank(t_vars *vars);
+void		fdf_changecolor(t_vars *vars, int keycode);
 
 // fdf_center_offset
 t_vector	fdf_center_offset(t_obj *obj, t_vars *buff);
 t_vector	obj_center(t_obj *obj);
 t_vector	vec_offset(t_vector a, t_vector offset);
-
-// fdf_itof
-double		fdf_itof(int integer, int frac);
 
 // fdf_file
 int			fdf_open_objfile(char *file, t_obj *obj, t_vars *buff);
@@ -112,24 +106,14 @@ t_vector	*line_to_avector(char *line, t_obj *obj);
 t_queue2	*openfile(char *file);
 int			measure_width(t_queue2	*que);
 
-// fdf_atoiuhex
+// utils
+double		fdf_itof(int integer, int frac);
 int			fdf_atoiuhex(const char *str);
-
-// fdf_clean
-void		fdf_cleanobj(t_obj *obj);
-t_vector	*fdf_cleanstrvec(t_vector *vec, char **mtx);
-
-// fdf_exit
-int			fdf_xerror(t_obj *obj, t_vars *buff);
-int			fdf_exit(t_obj *obj, t_vars *buff);
 
 // fdf_zoom
 void		fdf_zoom(t_vars *vars, int x, int y, double dz);
 void		fdf_gammazoom(t_vars *vars, int keycode);
 void		fdf_rotate(t_vars *vars, int keycode);
-
-// fdf_drawblank
-void		fdf_drawblank(t_vars *vars);
 
 // fdf_move
 void		fdf_updown(t_vars *vars, int keycode);
@@ -140,5 +124,14 @@ void		fdf_registerhooks(t_vars *vars);
 int			key_hook(int keycode, t_vars *vars);
 int			mouse_hook(int mousecode, int x, int y, t_vars *vars);
 int			cwin_hook(t_vars *vars);
+
+// fdf_clean
+void		fdf_cleanobj(t_obj *obj);
+t_vector	*fdf_cleanstrvec(t_vector *vec, char **mtx);
+
+// fdf_exit
+int			fdf_xerror(t_obj *obj, t_vars *buff);
+int			fdf_exit(t_obj *obj, t_vars *buff);
+int			fdf_pxerror(t_vars *vars, const char *errormsg);
 
 #endif

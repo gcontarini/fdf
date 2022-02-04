@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 11:03:50 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/03 10:46:22 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/04 11:27:38 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	key_hook(int keycode, t_vars *vars)
 		fdf_gammazoom(vars, keycode);
 	else if (keycode == 12 || keycode == 14)
 		fdf_rotate(vars, keycode);
+	else if (keycode == 15 || keycode == 5 || keycode == 11)
+		fdf_changecolor(vars, keycode);
 	fdf_drawblank(vars);
 	fdf_drawmesh(vars->obj, vars);
 	return (0);

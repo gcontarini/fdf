@@ -1,12 +1,12 @@
 ####### SOURCE FILES ######
 FILES	=	draw_line.c		\
-	  		fdf_drawmesh.c	\
-	  		fdf_drawblank.c	\
 			pixel2buff.c	\
-			projections.c	\
 			vector2img.c	\
-			vector_basic.c	\
-			vector_basic.c	\
+			vector.c	\
+			hooks.c	\
+			utils.c	\
+	  		fdf_drawmesh.c	\
+	  		fdf_drawutils.c	\
 			fdf_center_offset.c	\
 			fdf_itof.c	\
 			fdf_zoom.c	\
@@ -14,9 +14,7 @@ FILES	=	draw_line.c		\
 			fdf_atoiuhex.c	\
 			fdf_files.c	\
 			fdf_clean.c	\
-			fdf_exit.c	\
-			hooks.c		\
-			vector_math.c
+			fdf_exit.c
 
 SRC	= $(addprefix src/, $(FILES))
 OBJ	= $(addprefix obj/, $(FILES:.c=.o))

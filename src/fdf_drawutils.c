@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 11:12:11 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/03 19:16:59 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/04 11:27:39 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,14 @@ void	fdf_drawblank(t_vars *vars)
 		}
 		i++;
 	}
+}
+
+void	fdf_changecolor(t_vars *vars, int keycode)
+{
+	if (keycode == 15)
+		vars->obj->color = 0x00FF0000;
+	else if (keycode == 5)
+		vars->obj->color = 0x0000FF00;
+	else if (keycode == 11)
+		vars->obj->color = 0x000000FF;
 }

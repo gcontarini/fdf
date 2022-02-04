@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:36:54 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/02 16:04:13 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/04 11:22:47 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	fdf_open_objfile(char *file, t_obj *obj, t_vars *buff)
 	que = openfile(file);
 	if (!que)
 		return (0);
-	obj->gamma = 1.0;
 	obj->heigth = (int) ft_quelen(que) - 1;
 	obj->width = measure_width(que);
 	if(!line_to_mvector(que, obj))
@@ -70,8 +69,8 @@ t_vector	*line_to_avector(char *line, t_obj *obj)
 			z = fdf_itof(ft_atoi(val[i]), fdf_atoiuhex(++frac));
 		else
 			z = fdf_itof(ft_atoi(val[i]), 0);
-		vec[i] = orto_projection(vector(i, obj->heigth, -z * obj->gamma));
-		vec[i++].og_z = -z * obj->gamma;
+		vec[i] = orto_projection(vector(i, obj->heigth, -z));
+		vec[i++].og_z = -z;
 	}
 	obj->heigth++;
 	fdf_cleanstrvec(NULL, val);
