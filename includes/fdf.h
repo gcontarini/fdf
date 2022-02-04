@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 12:04:19 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/04 12:15:17 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/04 14:19:59 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "get_next_line.h"
 # include "ft_printf.h"
 # include "ft_queue.h"
-# include "mlx.h"
+# include <mlx.h>
 # include <fcntl.h>
 # include <math.h>
 # include <unistd.h>
@@ -75,10 +75,11 @@ void		pixel2buff(t_pixel a, int color, t_vars *buff);
 t_vector	vector(double x, double y, double z);
 t_vector	scalar_vector(double scalar, t_vector a);
 t_vector	orto_projection(t_vector a);
+t_vector	rotate(t_vector vec, double rad);
 
 // vector2img
-t_pixel		vector2img(t_vector a, t_obj *obj, t_vars *buff);
-t_vector	img2vector(t_pixel a, t_obj *obj, t_vars *buff);
+t_pixel		vector2img(t_vector a);
+t_vector	img2vector(t_pixel a);
 
 // draw_line
 void		draw_line(t_pixel a, t_pixel b, int color, t_vars *buff);

@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 11:56:42 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/04 11:20:21 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/04 14:21:50 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	fdf_drawmesh(t_obj *obj, t_vars *buff)
 {
 	t_vector	a;
 	t_vector	b;
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 
 	i = 1;
 	while (i < obj->heigth)
@@ -45,15 +45,15 @@ void	draw_conlines(t_vector a, t_vector b, t_obj *obj, t_vars *buff)
 
 	a_hat = vec_offset(a, obj->center_offset);
 	b_hat = vec_offset(b, obj->center_offset);
-	draw_line(vector2img(a_hat, obj, buff), vector2img(b_hat, obj, buff), obj->color, buff);
+	draw_line(vector2img(a_hat), vector2img(b_hat), obj->color, buff);
 }
 
 void	draw_outline(t_obj *obj, t_vars *buff)
 {
 	t_vector	a;
 	t_vector	b;
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 
 	i = 1;
 	j = 0;

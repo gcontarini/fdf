@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:12:17 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/04 12:13:04 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/04 12:28:49 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ double	fdf_itof(int integer, int frac)
 {
 	double	n;
 	double	f;
-	
+
 	n = (double) integer;
 	f = (double) frac;
 	while (f >= 1.0)
@@ -30,9 +30,9 @@ double	fdf_itof(int integer, int frac)
 
 int	fdf_atoiuhex(const char *str)
 {
-	double		n;
-	int		nbr;
 	const char	*p;
+	double		n;
+	int			nbr;
 
 	while ((*str >= 9 && *str <= 13) || *str == 32)
 		str++;
@@ -43,7 +43,7 @@ int	fdf_atoiuhex(const char *str)
 		p++;
 		n += 1.0;
 	}
-	nbr = 0;;
+	nbr = 0;
 	while (*str && ft_strchr(UPHEX_BASE, *str))
 	{
 		if (*str >= '0' && *str <= '9')

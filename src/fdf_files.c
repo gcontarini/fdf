@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:36:54 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/04 11:22:47 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/04 15:23:52 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	fdf_open_objfile(char *file, t_obj *obj, t_vars *buff)
 		return (0);
 	obj->heigth = (int) ft_quelen(que) - 1;
 	obj->width = measure_width(que);
-	if(!line_to_mvector(que, obj))
+	if (!line_to_mvector(que, obj))
 		return (0);
 	obj->center_offset = fdf_center_offset(obj, buff);
 	ft_queclean(que, free);
@@ -31,7 +31,7 @@ int	fdf_open_objfile(char *file, t_obj *obj, t_vars *buff)
 int	line_to_mvector(t_queue2 *que, t_obj *obj)
 {
 	t_queue_unit	unit;
-	int		i;
+	int				i;
 
 	obj->vec = (t_vector **) malloc(obj->heigth * sizeof(t_vector *));
 	if (!obj->vec)
@@ -44,6 +44,7 @@ int	line_to_mvector(t_queue2 *que, t_obj *obj)
 		obj->vec[i] = line_to_avector((char *) unit.content, obj);
 		if (!obj->vec[i++])
 			return (0);
+		free(unit.content);
 		unit = ft_deque(que);
 	}
 	return (i);
@@ -55,7 +56,7 @@ t_vector	*line_to_avector(char *line, t_obj *obj)
 	char		**val;
 	char		*frac;
 	double		z;
-	int		i;
+	int			i;
 
 	val = ft_split(line, ' ');
 	vec = (t_vector *) malloc(obj->width * sizeof(t_vector));
@@ -79,7 +80,7 @@ t_vector	*line_to_avector(char *line, t_obj *obj)
 
 t_queue2	*openfile(char *file)
 {
-	int		fd;
+	int			fd;
 	t_queue2	*que;
 
 	fd = open(file, O_RDONLY);
@@ -103,7 +104,7 @@ int	measure_width(t_queue2	*que)
 	char		*p;
 	int			width;
 
-	p = (char *) (ft_queget(que, 0)->content);
+	p = (char *) ft_queget(que, 0)->content;
 	width = 0;
 	while (p && *p)
 	{

@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:07:12 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/04 12:09:37 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/04 12:19:54 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,13 @@ t_vector	orto_projection(t_vector a)
 	a_hat.y = (a.x + a.y + (2.0 * a.z)) * (sqrt(6.0) / 6.0);
 	a_hat.z = (a.x + a.y + a.z) * (sqrt(3.0) / 3.0);
 	return (a_hat);
+}
+
+t_vector	rotate(t_vector vec, double rad)
+{
+	vec.x = (vec.x * cos(rad)) - (vec.y * sin(rad));
+	vec.y = (vec.x * sin(rad)) + (vec.y * cos(rad));
+	vec.y = (vec.y * cos(rad)) - (vec.z * sin(rad));
+	vec.z = (vec.y * sin(rad)) + (vec.z * cos(rad));
+	return (vec);
 }

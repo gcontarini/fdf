@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 10:40:10 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/04 12:00:18 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/04 12:26:47 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	main(int ac, char *av[])
 	v.img = mlx_new_image(v.mlx, v.width, v.heigth);
 	if (!v.win || !v.img)
 		return (fdf_pxerror(&v, "Error setting window/buffer image.\n"));
-	v.addr = mlx_get_data_addr(v.img, &v.bits_per_pixel, &v.line_length, &v.endian);
+	v.addr = mlx_get_data_addr(v.img, &v.bits_per_pixel,
+			&v.line_length, &v.endian);
 	fdf_registerhooks(&v);
 	fdf_drawmesh(&obj, &v);
 	mlx_loop(v.mlx);

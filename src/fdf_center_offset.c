@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 11:08:15 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/03 11:08:19 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/04 14:22:09 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_vector	fdf_center_offset(t_obj *obj, t_vars *buff)
 	midpoint = obj_center(obj);
 	a.x = (buff->width / 2);
 	a.y = (buff->heigth / 2);
-	offset = img2vector(a, obj, buff);
+	offset = img2vector(a);
 	offset.x -= midpoint.x;
 	offset.y -= midpoint.y;
 	offset.z -= midpoint.z;
@@ -33,7 +33,7 @@ t_vector	obj_center(t_obj *obj)
 	t_vector	center;
 	int			i;
 	int			j;
-			
+
 	center = vector(0.0, 0.0, 0.0);
 	i = 0;
 	while (i < obj->heigth)
@@ -41,7 +41,6 @@ t_vector	obj_center(t_obj *obj)
 		j = 0;
 		while (j < obj->width)
 		{
-
 			center.x += obj->vec[i][j].x;
 			center.y += obj->vec[i][j].y;
 			center.z += obj->vec[i][j].z;

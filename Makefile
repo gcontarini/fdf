@@ -1,40 +1,37 @@
 ####### SOURCE FILES ######
-FILES	=	draw_line.c		\
-			pixel2buff.c	\
-			vector2img.c	\
-			vector.c	\
-			hooks.c	\
-			utils.c	\
-	  		fdf_drawmesh.c	\
-	  		fdf_drawutils.c	\
+FILES	=	draw_line.c			\
+			pixel2buff.c		\
+			vector2img.c		\
+			vector.c			\
+			hooks.c				\
+			utils.c				\
+	  		fdf_drawmesh.c		\
+	  		fdf_drawutils.c		\
 			fdf_center_offset.c	\
-			fdf_itof.c	\
-			fdf_zoom.c	\
-			fdf_move.c	\
-			fdf_atoiuhex.c	\
-			fdf_files.c	\
-			fdf_clean.c	\
+			fdf_zoom.c			\
+			fdf_move.c			\
+			fdf_files.c			\
+			fdf_clean.c			\
 			fdf_exit.c
 
-SRC	= $(addprefix src/, $(FILES))
-OBJ	= $(addprefix obj/, $(FILES:.c=.o))
-INC	= includes/
+SRC		= $(addprefix src/, $(FILES))
+OBJ		= $(addprefix obj/, $(FILES:.c=.o))
+INC		= includes/
 
 ###### TARGETS ######
 NAME	= fdf
 LIBFT	= libft.a
-MLX	= libmlx.a
+MLX		= libmlx.a
 
 ###### COMPILER ######
-CC	= gcc
-#CFLAGS	= -Wall -Wextra -Werror
-CFLAGS	= 
-RM	= rm -f
-DLIBS	= -framework OpenGL -framework AppKit
+CC		= gcc
+CFLAGS	= -Wall -Wextra -Werror
+RM		= rm -f
+DLIBS	= -lmlx -framework OpenGL -framework AppKit
 
-all	: $(NAME)
+all		: $(NAME)
 
-$(NAME)	: $(OBJ) $(LIBFT) $(MLX) src/main.c
+$(NAME)	: $(OBJ) $(LIBFT) src/main.c
 	$(CC) $(CFLAGS) $^ $(DLIBS) -I$(INC) -o $@
 
 obj/%.o	: */%.c
@@ -45,18 +42,13 @@ $(LIBFT) :
 	@make -C libft/
 	@cp libft/$@ .
 
-$(MLX)	: 
-	@make -C mlx/
-	@cp mlx/$@ .
-
 clean	:
 	$(RM) $(OBJ)
 	@make fclean -C libft/
-	@make clean -C mlx/
 
 fclean	: clean
 	$(RM) $(NAME) $(LIBFT) $(MLX)
 
-re	: fclean all	
+re		: fclean all	
 
-.PHONY	: all clean fclean re
+.PHONY	: all clean fclean re linux

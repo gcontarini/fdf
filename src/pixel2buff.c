@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pixel2buff.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/04 12:27:12 by gcontari          #+#    #+#             */
+/*   Updated: 2022/02/04 12:27:56 by gcontari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 void	pixel2buff(t_pixel a, int color, t_vars *buff)
@@ -8,7 +20,7 @@ void	pixel2buff(t_pixel a, int color, t_vars *buff)
 		&& (a.y >= 0 && a.y < buff->heigth))
 	{
 		dst = buff->addr + buff_offset(a.x, a.y, buff);
-		*(unsigned int*) dst = color;
+		*(unsigned int *) dst = color;
 	}
 }
 

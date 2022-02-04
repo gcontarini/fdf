@@ -6,7 +6,7 @@
 /*   By: gcontari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 11:03:45 by gcontari          #+#    #+#             */
-/*   Updated: 2022/02/03 11:07:12 by gcontari         ###   ########.fr       */
+/*   Updated: 2022/02/04 12:19:58 by gcontari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,4 @@ void	fdf_rotate(t_vars *vars, int keycode)
 		}
 		i++;
 	}
-}
-
-t_vector	rotate(t_vector vec, double rad)
-{
-	vec.x = (vec.x * cos(rad)) - (vec.y * sin(rad));
-	vec.y = (vec.x * sin(rad)) + (vec.y * cos(rad));
-	vec.y = (vec.y * cos(rad)) - (vec.z * sin(rad));
-	vec.z = (vec.y * sin(rad)) + (vec.z * cos(rad));
-	return (vec);
 }
