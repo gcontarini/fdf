@@ -14,9 +14,9 @@ FILES	=	draw_line.c			\
 			fdf_clean.c			\
 			fdf_exit.c
 
-SRC		= $(addprefix src/, $(FILES))
+SRC		= $(addprefix ., $(FILES))
 OBJ		= $(addprefix obj/, $(FILES:.c=.o))
-INC		= includes/
+INC		= .
 
 ###### TARGETS ######
 NAME	= fdf
@@ -31,10 +31,10 @@ DLIBS	= -lmlx -framework OpenGL -framework AppKit
 
 all		: $(NAME)
 
-$(NAME)	: $(OBJ) $(LIBFT) src/main.c
+$(NAME)	: $(OBJ) $(LIBFT) main.c
 	$(CC) $(CFLAGS) $^ $(DLIBS) -I$(INC) -o $@
 
-obj/%.o	: */%.c
+obj/%.o	: %.c
 	@mkdir -p obj/
 	$(CC) $(CFLAGS) -c -I$(INC) $< -o $@
 
